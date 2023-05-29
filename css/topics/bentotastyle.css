@@ -132,6 +132,174 @@ nav .bottom ul li:hover{
     }
   }
 
+/* Main image */
+
+#main-img{
+    width: 100vw;
+    height: fit-content;
+  }
+
+  #main-img .bg-image{
+    width: 100vw;
+    max-height:20rem;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  #main-img h1{
+    position: relative;
+    text-align: center;
+    transform: translateY(-12rem);
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 50px;
+    color: white;
+}
+
+/* section 1  */
+
+
+body{
+    background: var(--darkgray-color);
+}
+
+#sec1{
+    height: fit-content;
+    padding: 1rem 0rem;
+}
+
+#sec1 .wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap:wrap-reverse;
+    gap: 30px;
+    padding:0rem 8rem;
+}
+
+#sec1 .wrapper>* {
+    flex: 1 18rem;
+}
+
+#sec1 .wrapper .left p{
+    font-family:'inter';
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    padding: 1rem;
+    border: solid white 2px;
+    border-radius: 10px;
+}
+
+#sec1 .wrapper .right{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#sec1 .wrapper .right>* {
+    flex: 1 18rem;
+}
+
+#sec1 .wrapper .right .img-1{
+    min-height: 15rem;
+    max-height: 20rem;
+    border-radius: 10px;
+
+    background: url(../../assets/turtcathead.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#sec1 .wrapper .right iframe{
+    object-fit:cover;
+    border-radius: 10px;
+
+    max-width: 100%;
+    height: auto*1.5;
+    min-width: 30rem;
+    width: auto\9;
+}
+
+/* section 2  */
+
+#sec2{
+    height: fit-content;
+    padding: 3rem 0rem;
+    background: white;
+    margin: 2rem 0rem ;
+}
+
+#sec2 p{
+    text-align: center;
+    padding: 0rem 8rem;
+    font-family:'inter';
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+}
+
+/* section 3  */
+
+#sec3{
+    height: fit-content;
+    padding: 1rem 0rem;
+}
+
+#sec3 .wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    gap: 30px;
+    padding:0rem 8rem;
+}
+
+#sec3 .wrapper>* {
+    flex: 1 18rem;
+}
+
+#sec3 .wrapper .right p{
+    font-family:'inter';
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    padding: 1rem;
+    border: solid white 2px;
+    border-radius: 10px;
+}
+
+#sec3 .wrapper .left{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#sec3 .wrapper .left>* {
+    flex: 1 20rem;
+}
+
+#sec3 .wrapper .left .img-1{
+    min-height: 12rem;
+    max-height: 30rem;
+    border-radius: 10px;
+
+    background: url(../../assets/turtcathead.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#sec3 .wrapper .left .img-2{
+    min-height: 12rem;
+    max-height: 30rem;
+    border-radius: 10px;
+
+    background: url(../../assets/turtcathead.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 
 /*Footer------------------------------*/

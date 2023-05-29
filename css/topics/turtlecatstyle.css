@@ -355,7 +355,6 @@ iframe{
     left: 10%;
 }
 
-
 table {
     margin: 30px auto;
     border: 3px solid var(--background-color);
@@ -363,30 +362,43 @@ table {
     background-color: #ffffff;
     padding: 20px;
     width: 83vw;
-
   }
-  .table thead {
+  
+  table thead {
     background-color: var(--background-color);
-
     position: relative;
     font-family: 'Inter';
     font-weight: 700;
     font-size: 20px;
   }
-
-  .table th {
+  
+  table th {
     padding: 10px;
   }
-
-  .table td {
+  
+  table td {
     border: 1px solid var(--background-color);
     padding: 10px;
-
     position: relative;
     font-family: 'Inter';
     font-weight: 400;
     font-size: 15px;
   }
+  
+  table tfoot {
+    background-color: var(--background-color);
+    position: relative;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 20px;
+  }
+  
+  table tfoot td {
+    padding: 10px;
+    border: none;
+    text-align: center;
+  }
+  
 
 /*Footer------------------------------*/
 
