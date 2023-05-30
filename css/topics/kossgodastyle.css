@@ -216,6 +216,34 @@ nav .bottom ul li:hover{
     width: auto\9;
 }
 
+section .image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: var(--transiton-btn-hover);
+}
+
+section .image:hover{
+    box-shadow: 0 0 0 300px rgba(0, 0, 0, 0.7) inset;
+}
+
+section .image h3{
+    opacity: 0;
+    transform: scale(0);
+    transition: var(--transiton-btn-hover);
+
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    color: white;
+}
+
+section .image:hover h3{
+    opacity: 1;
+    transform: scale(1);
+}
+
 /* section 2  */
 
 #sec2{
@@ -444,12 +472,51 @@ footer .bottom{
 /*Media queries*/
 
 @media screen and (max-width: 1470px) {
+
+
     footer .top .right .sec1{
         margin-left: 80px;
     }
   }
 
   @media screen and (max-width: 1225px) {
+
+
+    /* section 1  */
+
+#sec1 .wrapper{
+    padding:0rem 4rem;
+}
+
+#sec1 .wrapper .left p{
+    font-size: 18px;
+}
+
+section .image:hover{
+    box-shadow: 0 0 0 300px rgba(0, 0, 0, 0.7) inset;
+}
+
+section .image h3{
+    font-size: 35px;
+}
+
+/* section 2  */
+
+#sec2 p{
+    font-size: 18px;
+    padding: 0rem 4rem;
+}
+
+/* section 3  */
+
+#sec3 .wrapper{
+    padding:0rem 4rem;
+}
+
+#sec3 .wrapper .right p{
+    font-size: 18px;
+}
+
  
     footer .top .right .sec1{
         margin-left: 40px;
@@ -469,6 +536,8 @@ footer .bottom{
   }
 
   @media screen and (max-width: 1050px) {
+
+
     footer .top .right .sec1{
         margin-left: 20px;
     }
@@ -488,6 +557,45 @@ footer .bottom{
   }
 
   @media screen and (max-width: 925px) {
+
+        /* section 1  */
+
+#sec1 .wrapper{
+    padding:0rem 2rem;
+}
+
+#sec1 .wrapper .left p{
+    font-size: 16px;
+}
+
+section .image:hover{
+    box-shadow: 0 0 0 300px rgba(0, 0, 0, 0.7) inset;
+}
+
+section .image h3{
+    font-size: 35px;
+}
+
+/* section 2  */
+
+#sec2 p{
+    font-size: 16px;
+    padding: 0rem 2rem;
+}
+
+/* section 3  */
+
+#sec3 .wrapper{
+    padding:0rem 2rem;
+}
+
+#sec3 .wrapper .right p{
+    font-size: 16px;
+}
+    
+
+    /* Footer */
+
     .footer-img{
         background: none;
         width: 60px;
@@ -520,6 +628,48 @@ footer .bottom{
 
   
   @media screen and (max-width: 736px) {
+
+    /* section 1  */
+
+#sec1 .wrapper{
+    padding:0rem 1rem;
+}
+
+#sec1 .wrapper .left p{
+    font-size: 16px;
+}
+
+section .image:hover{
+    box-shadow: 0 0 0 300px rgba(0, 0, 0, 0.7) inset;
+}
+
+section .image h3{
+    font-size: 40px;
+}
+
+#sec1 .wrapper .right iframe{
+    min-width: 25rem;
+}
+
+/* section 2  */
+
+#sec2 p{
+    font-size: 16px;
+    padding: 0rem 1rem;
+}
+
+/* section 3  */
+
+#sec3 .wrapper{
+    padding:0rem 1rem;
+}
+
+#sec3 .wrapper .right p{
+    font-size: 16px;
+}
+
+    /* Footer */
+    
     footer .top .right .sec1{
         grid-template-rows: repeat(2, 100px);
     }
@@ -536,6 +686,42 @@ footer .bottom{
   
   @media screen and (max-width: 500px){
     
+        /* section 1  */
+
+#sec1 .wrapper{
+    padding:0rem 1rem;
+}
+
+#sec1 .wrapper .left p{
+    font-size: 16px;
+}
+
+#sec1 .wrapper .right iframe{
+    min-width: 20rem;
+}
+
+
+section .image h3{
+    font-size: 40px;
+}
+
+/* section 2  */
+
+#sec2 p{
+    font-size: 16px;
+    padding: 0rem 1rem;
+}
+
+/* section 3  */
+
+#sec3 .wrapper{
+    padding:0rem 1rem;
+}
+
+#sec3 .wrapper .right p{
+    font-size: 16px;
+}
+
     /* Footer */
 
     footer .top .right .sec1{
