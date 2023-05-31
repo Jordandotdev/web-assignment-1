@@ -220,6 +220,17 @@ nav .bottom ul li:hover{
     border-radius: 10px;
 }
 
+#Content a{
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 20px;
+    color:  var(--sea-color);
+}
+
+#Content a:hover{
+    color:  black;
+}
+
 .main-head{
     position: relative;
     font-family: 'Inter';
@@ -253,14 +264,14 @@ nav .bottom ul li:hover{
 }
 
 .sec1 .subsec2 .img{
-    background: url(../../assets/topics/threats-testimg.png);
+    background: url(../../assets/climateturt.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .sec2 .subsec2 .img{
-    background: url(../../assets/topics/threats-testimg.png);
+    background: url(../../assets//fishturt.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

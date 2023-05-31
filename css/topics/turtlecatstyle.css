@@ -333,6 +333,10 @@ iframe{
 
 /*Table section---------------------*/
 
+#table{
+    height: fit-content;
+}
+
 .content-head2{
     margin-left: 8rem;
     position: relative;

@@ -200,10 +200,11 @@ nav .bottom ul li:hover{
     max-height: 20rem;
     border-radius: 10px;
 
-    background: url(../../assets/turtcathead.jpg);
+    background: url(../../assets/kosturt.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 #sec1 .wrapper .right iframe{
@@ -222,6 +223,7 @@ section .image{
     align-items: center;
     text-align: center;
     transition: var(--transiton-btn-hover);
+
 }
 
 section .image:hover{
@@ -305,22 +307,12 @@ section .image:hover h3{
     max-height: 20rem;
     border-radius: 10px;
 
-    background: url(../../assets/turtcathead.jpg);
+    background: url(../../assets/kosturt2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#sec3 .wrapper .left .img-2{
-    min-height: 12rem;
-    max-height: 20rem;
-    border-radius: 10px;
-
-    background: url(../../assets/turtcathead.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 /*Footer------------------------------*/
 
