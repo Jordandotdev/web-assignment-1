@@ -692,6 +692,11 @@ section .image h3{
 
   
   @media screen and (max-width: 500px){
+
+    
+    #main-img h1{
+        font-size: 40px;
+    }
     
         /* section 1  */
 
