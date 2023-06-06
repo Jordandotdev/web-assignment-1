@@ -320,6 +320,7 @@ footer{
     background: #222328;
     border-radius: 10px 10px 0px 0px;
     padding-top: 1rem;
+    overflow-x: hidden;
 }
 
 /*Footer top section*/
