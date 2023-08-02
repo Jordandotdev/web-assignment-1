@@ -2,27 +2,58 @@ console.info('Order store loaded!');
 
 
 document.addEventListener('alpine:init', () => {
-    Alpine.store('Order', {
-     prices :[
+    Alpine.store('order', {
+
+    test : "Hello",
+    
+    Peak_prices:[
+
         {
-            Normal_FA : 10,
-            Peak_FA : 13
+            Name : "Foriegn Adult",
+            value : 13
         },
         {
-            Normal_FC : 5,
-            Peak_FC : 8
+            Name : "Foriegn Child",
+            value : 8
         },
         {
-            Normal_SA : 4,
-            Peak_SA : 6
+            Name : "Local Adult",
+            value : 6
         },
         {
-            Normal_SC : 2,
-            Peak_SC : 3
+            Name : "Local Child",
+            value : 3
         },
         {
-            Infant : 0
+            Name : "Infant",
+            value : 0
         }
+
+        ],
+
+    Normal_prices :[
+
+        {
+            Name : "Foriegn Adult",
+            value : 10
+        },
+        {
+            Name : "Foriegn Child",
+            value : 5 
+        },
+        {
+            Name : "Local Adult",
+            value : 4
+        },
+        {
+            Name : "Local Child",
+            value : 2
+        },
+        {
+            Name : "Infant",
+            value : 0
+        }
+
      ]
     })
 })

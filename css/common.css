@@ -81,6 +81,25 @@ section{
 }
 
 
+/* button styles */
+
+.btn1{
+    padding: 0.5rem;
+    border-radius: 20px;
+    background-color: #638E18;
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+
+    transition: var(--transiton-btn-hover);
+}
+
+button:hover{
+    scale: 1.1;
+}
+
 /*Navbar------------------------------*/
 
 nav{
@@ -144,8 +163,7 @@ nav .bottom ul li a{
     color: white;
 }
 
-nav .bottom ul li:nth-child(1),
-nav .bottom ul li:hover{
+nav .bottom ul li:nth-child(1){
     border-radius: 20px;
 }
 
@@ -184,6 +202,8 @@ nav .bottom ul li:hover{
   /*Footer------------------------------*/
 
 footer{
+    /* position: absolute;
+    bottom: 0; */
     background: #222328;
     border-radius: 10px 10px 0px 0px;
     padding-top: 1rem;

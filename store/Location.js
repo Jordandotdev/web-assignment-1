@@ -5,7 +5,6 @@ document.addEventListener('alpine:init', () => {
         name : 'Hikkaduwa Turte Hatchery',
         address : 'No. 21, Beach Road, Hikkaduwa',
         phone : '+94 11 236 6356',
-        // image : 'https://media.timeout.com/images/101852201/750/422/image.jpg',
         timeSlots: [ //When type is 0 = normal/ 1 = peak
             {
                 start: '07:00',

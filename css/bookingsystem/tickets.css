@@ -1,0 +1,106 @@
+:root {
+
+    --sea-color: #02796B;
+    --logo-color: #638E18;
+    --red-color:#F43F3F;
+    --darkgray-color: rgb(76, 76, 76);
+    --background-color:#D9D9D9;
+
+    --transiton-btn-hover: all 400ms ease;
+
+    --footer-main-font:18px;
+    --footer-sub-font:16px;
+
+    --footer-small-font:14px;
+}
+
+
+#main{
+    height: fit-content;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 1rem;
+    margin-bottom : 1rem;
+}
+
+#left{
+    justify-content:space-between;
+    text-align: center;
+    border-radius: 10px;
+    background-color: aliceblue;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#right{
+    justify-content:flex-start;
+    text-align: center;
+    background-color: aqua;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+/* button styling */
+
+.btn_container{
+    position: relative;
+    display: flex;
+}
+
+#increment,#decrement{
+    background-color: var(--logo-color);
+    border: none;
+    width: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+#increment{
+    padding: 0 20px 0 10px;
+    border-radius:0 20px 20px 0;
+}
+
+#decrement{
+    padding: 0 10px 0 20px;
+    border-radius: 20px 0 0 20px;
+}
+
+input[type="number"]{
+    -moz-appearance: textfield;
+    text-align: center;
+    font-size: 15px;
+    width: 30px;
+    background-color: var(--logo-color);
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*Gusets input field styling*/
+
+.CG_Input{
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Class container styling*/
+
+h2{
+    margin-bottom: 1rem;
+}
+
+.class-container{
+    padding: 2rem;
+    background: wheat;
+    border-radius: 20px;
+}
