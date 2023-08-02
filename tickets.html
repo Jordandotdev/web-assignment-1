@@ -47,9 +47,74 @@
     </div>
 </nav>
 
-<section>
-    
-</section>
+
+<div x-data="tickets">
+    <section id="main">
+        <div id="left">    
+
+            <div id="Date " class="class-container">
+                <h2>Choose the date</h2>
+                <input type="date" id="dateInput">
+            </div>
+
+            
+            <div id="time " class="class-container">
+                <h2>Choose Times</h2>
+                <select x-on:change="selectTimeSlot($event.target.value)">
+                    <template x-for="(timeSlots, index) in $store.location.timeSlots">
+                        <option :value="timeSlots.start + '-' + timeSlots.end">
+                            Time: <span x-text="timeSlots.start"></span> - <span x-text="timeSlots.end"></span>
+                        </option>
+                    </template>
+                </select>
+            </div>
+
+
+            <div id="Guest " class="class-container">
+
+                <h2>Choose Guests</h2>
+
+                <template x-for="(order, index) in $store.order.Peak_prices"> 
+                    <div class="CG_Input">
+                        <label><span x-text="order.Name"></span></label>
+                        <div x-data="{ count: 1 }" class="btn_container">
+                            <button id="decrement" @click="count = Math.max(count - 1, 0)">-</button>
+                            <input type="number" x-bind:value="count" min="0" id="my_input" readonly>
+                            <button id="increment" @click="count++">+</button>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+
+            <div>
+                <button class="btn1" x-on:click="">Continue with Purchase</button>
+            </div>
+
+        </div>
+
+        <div id="right">
+
+            <div class="summary">
+                <h2>Order Summary</h2>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+<script>
+
+    selectTimeSlot(timeSlot){
+                    this.selectedTimeSlot = timeSlot;
+                    localStorage.setItem('selected_time_slot', JSON.stringify(timeSlot));    
+                    console.log(selected_time_slot);            
+                }
+
+
+</script>
+
 
 <script>
     document.addEventListener('alpine:init', () => {
@@ -60,6 +125,28 @@
             }
         }))
     })
+
+
+    // Get the current date in the format YYYY-MM-DD
+    const currentDate = new Date().toISOString().split('T')[0];
+
+    // Set the value of the input element to the current date
+    document.getElementById('dateInput').value = currentDate;
+
+  // Get the input element
+  const dateInput = document.getElementById('dateInput');
+
+  // Add event listener to the input element
+  dateInput.addEventListener('input', function(event) {
+    const selectedDate = new Date(event.target.value);
+    const currentDate = new Date();
+
+    // Compare selectedDate with currentDate
+    if (selectedDate < currentDate) {
+      // If selectedDate is in the past, prevent the change
+      event.target.value = currentDate.toISOString().split('T')[0];
+    }
+  });
 </script>
 
 <!--Footer section-->
