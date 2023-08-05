@@ -522,3 +522,29 @@ footer .bottom{
  }
 
   }
+
+/* Table styling */
+
+table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 100%;
+    text-align: left;
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 15px;
+
+    color: black;
+  }
+  
+  td {
+    /* border-radius: 10px; */
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+  .tablehead1{
+    background: rgba(133, 133, 133, 0.764);
+  }

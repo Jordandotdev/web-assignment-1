@@ -74,23 +74,35 @@
                 </div>
             </div>
 
-<!--
+
             <div id="Guest " class="class-container">
 
                 <h2>Choose Guests</h2>
 
-                <template x-for="(order, index) in $store.order.Peak_prices"> 
+                <!-- <template x-for="(order, index) in ticketTypes"> 
                     <div class="CG_Input">
-                        <label><span x-text="order.Name"></span></label>
+                        <label><span x-text="order.name"></span></label>
                         <div x-data="{ count: 0 }" class="btn_container">
                             <button id="decrement" @click="count = Math.max(count - 1, 0)">-</button>
                             <input type="number" x-bind:value="count" min="0" id="my_input" readonly>
                             <button id="increment" @click="count++">+</button>
                         </div>
                     </div>
+                </template> -->
+                <template x-for="(ticketType, index) in ticketTypes" :key="index">
+                    <div class="CG_Input">
+                        <label x-bind:for="ticketType.name" x-text="ticketType.name"></label>
+                        <div class="btn_container">
+                            <button type="button" id="decrement"
+                                x-on:click="ticketTypes[index].count = (ticketTypes[index].count - 1 > 0 ? ticketTypes[index].count - 1 : 0); calculate(ticketTypes[index])">-</button>
+                            <input type="number" x-model="ticketTypes[index].count" readonly />
+                            <button id="increment"
+                                x-on:click="ticketTypes[index].count = ticketTypes[index].count + 1; calculate(ticketTypes[index])">+</button>
+                        </div>
+                    </div>
                 </template>
 
-            </div> -->
+            </div> 
            
 
             <div>
@@ -110,6 +122,28 @@
                     </tr>
                     <tr>
                         <td>Selected Times</td>
+                        <td>
+                            <template x-for="timeIndex in selectedTimeSlots">
+                                <div x-text="openTimes[timeIndex].title"></div>
+                            </template>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Duration</td>
+                        <td></td>
+                    </tr>
+                    <tr class="tablehead1">
+                        <td>Tickets</td>
+                        <td>Charges</td>
+                    </tr>
+                    <template x-for="guestIndex in ticketTypes">
+                        <tr>   
+                                <td><div x-text="guestIndex.name"></div></td>
+                                <td><div x-text="guestIndex.total"></div></td>  
+                        </tr>
+                    </template>
+                    <tr>
+                        <td>Total Payable</td>
                         <td></td>
                     </tr>
                 </Table>
@@ -127,32 +161,34 @@
         Alpine.data('tickets', () => ({
             date: null,
             open: false,
+            selectedTimeSlots: [],
+
             ticketTypes: [
                 {
                     name: 'Sri Lankan Adult',
-                    peak: 100,
-                    offPeak: 50,
+                    peak: 6,
+                    offPeak: 4,
                     count: 0,
                     total: 0
                 },
                 {
                     name: 'Sri Lankan Child',
-                    peak: 50,
-                    offPeak: 25,
+                    peak: 3,
+                    offPeak: 2,
                     count: 0,
                     total: 0
                 },
                 {
                     name: 'Foreign Adult',
-                    peak: 200,
-                    offPeak: 150,
+                    peak: 13,
+                    offPeak: 10,
                     count: 0,
                     total: 0
                 },
                 {
                     name: 'Foreign Child',
-                    peak: 150,
-                    offPeak: 100,
+                    peak: 8,
+                    offPeak: 5,
                     count: 0,
                     total: 0
                 },
@@ -164,6 +200,7 @@
                     total: 0
                 },
             ],
+
             openTimes: [
 
                 {
@@ -212,8 +249,6 @@
                 },
             ],
 
-            selectedTimeSlots: [],
-
             selectTimeSlot(index) {
 
             if (this.selectedTimeSlots.includes(index)) {
@@ -240,10 +275,28 @@
             const today = new Date();
             return today.toLocaleDateString('en-US');
             },
-            
+      
+            calculate(ticketType) {
+
+            let total = 0;
+
+            this.selectedTimeSlots.forEach((timeSlotIndex) => {
+
+                // calculate the total
+                total += parseInt(ticketType.count * (this.openTimes[timeSlotIndex].isPeak ? ticketType.peak : ticketType.offPeak));
+            });
+
+            ticketType.total = total;
+
+            },
+
             gotoCheckout(){
                     // store the data in the local storage
                     localStorage.setItem('SavedDate', JSON.stringify(this.date));
+                    localStorage.setItem('SavedTimeslot', JSON.stringify(this.selectedTimeSlots));
+                    localStorage.setItem('SavedPrice', JSON.stringify(this.ticketTypes));
+
+                    window.location.href = 'details.html';
             }
 
         }));

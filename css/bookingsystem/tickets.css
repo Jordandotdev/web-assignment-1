@@ -41,7 +41,7 @@
 #right{
     justify-content:flex-start;
     text-align: center;
-    background-color: aqua;
+    background-color: rgba(57, 145, 145, 0.589);
     border-radius: 10px;
     padding: 2rem;
 }
@@ -104,3 +104,5 @@ h2{
     background: wheat;
     border-radius: 20px;
 }
+
+  
