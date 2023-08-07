@@ -79,16 +79,6 @@
 
                 <h2>Choose Guests</h2>
 
-                <!-- <template x-for="(order, index) in ticketTypes"> 
-                    <div class="CG_Input">
-                        <label><span x-text="order.name"></span></label>
-                        <div x-data="{ count: 0 }" class="btn_container">
-                            <button id="decrement" @click="count = Math.max(count - 1, 0)">-</button>
-                            <input type="number" x-bind:value="count" min="0" id="my_input" readonly>
-                            <button id="increment" @click="count++">+</button>
-                        </div>
-                    </div>
-                </template> -->
                 <template x-for="(ticketType, index) in ticketTypes" :key="index">
                     <div class="CG_Input">
                         <label x-bind:for="ticketType.name" x-text="ticketType.name"></label>
@@ -130,7 +120,7 @@
                     </tr>
                     <tr>
                         <td>Duration</td>
-                        <td></td>
+                        <td x-text="selectedTimeSlots.length + ' Hrs' "></td>
                     </tr>
                     <tr class="tablehead1">
                         <td>Tickets</td>
@@ -139,12 +129,12 @@
                     <template x-for="guestIndex in ticketTypes">
                         <tr>   
                                 <td><div x-text="guestIndex.name"></div></td>
-                                <td><div x-text="guestIndex.total"></div></td>  
+                                <td><div x-text="'$'+guestIndex.total"></div></td>  
                         </tr>
                     </template>
                     <tr>
                         <td>Total Payable</td>
-                        <td></td>
+                        <td x-text="'$'+calculateGrandTotal(ticketTypes)"></td>
                     </tr>
                 </Table>
             </div>
@@ -162,7 +152,6 @@
             date: null,
             open: false,
             selectedTimeSlots: [],
-
             ticketTypes: [
                 {
                     name: 'Sri Lankan Adult',
@@ -200,7 +189,6 @@
                     total: 0
                 },
             ],
-
             openTimes: [
 
                 {
@@ -277,7 +265,7 @@
             },
       
             calculate(ticketType) {
-
+                
             let total = 0;
 
             this.selectedTimeSlots.forEach((timeSlotIndex) => {
@@ -290,13 +278,29 @@
 
             },
 
+            calculateGrandTotal(ticketTypes) {
+            grandTotal = 0;
+
+            for (const ticketType of ticketTypes) {
+                grandTotal += ticketType.total;
+            }
+
+            return grandTotal;
+            },
+
             gotoCheckout(){
+
+                    if(this.date == null || this.selectedTimeSlots == null || this.ticketTypes == null){
+                        alert('Please Fill the given Criteria');
+                }else{
                     // store the data in the local storage
                     localStorage.setItem('SavedDate', JSON.stringify(this.date));
                     localStorage.setItem('SavedTimeslot', JSON.stringify(this.selectedTimeSlots));
                     localStorage.setItem('SavedPrice', JSON.stringify(this.ticketTypes));
+                    localStorage.setItem('SavedTotal',grandTotal)
 
                     window.location.href = 'details.html';
+                }
             }
 
         }));
