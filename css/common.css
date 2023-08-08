@@ -90,7 +90,20 @@ section{
 
     font-family:'inter';
     font-weight: 700;
-    font-size: 15px;
+    font-size: 20px;
+    color: white;
+
+    transition: var(--transiton-btn-hover);
+}
+
+.btnMain{
+    padding: 0.5rem;
+    border-radius: 20px;
+    background-color: var(--red-color);
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 20px;
     color: white;
 
     transition: var(--transiton-btn-hover);
@@ -531,6 +544,7 @@ table {
     border: 1px solid black;
     width: 100%;
     text-align: left;
+    margin-bottom: 15px;
 
     font-family:'inter';
     font-weight: 700;
@@ -548,3 +562,84 @@ table {
   .tablehead1{
     background: rgba(133, 133, 133, 0.764);
   }
+
+  /* main styles */
+
+  #main{
+    height: fit-content;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items:first baseline;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 1rem;
+    margin-bottom : 1rem;
+}
+
+#left{
+    justify-content:space-between;
+    text-align: center;
+    border-radius: 10px;
+    background-color: aliceblue;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#right{
+    justify-content:flex-start;
+    text-align: center;
+    background-color: rgba(57, 145, 145, 0.589);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+/*Class container styling*/
+
+h2{
+    margin-bottom: 1rem;
+}
+
+.class-container{
+    padding: 2rem;
+    background: wheat;
+    border-radius: 20px;
+}
+
+/* btn styling */
+
+.btn_container{
+    position: relative;
+    display: flex;
+}
+
+
+/* selector Styling */
+
+.mSelecor1{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.selector1{
+    justify-content: center;
+    padding: 10px;
+    border-radius: 20px;
+    background: white;
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 15px;
+
+    color: black;
+}
+
+/* input types */
+
+.inp1{
+    
+}

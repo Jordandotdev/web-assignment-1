@@ -44,6 +44,7 @@
     </div>
 </nav>
 
+    <!-- Main body -->
 
 <div x-data="tickets">
     <section id="main">
@@ -53,8 +54,7 @@
                 <h2>Choose the date</h2>
                 <input type="date" name="date" id="date" x-model="date" class="btn1">
             </div>
-
-             
+        
             <div id="time " class="class-container">
                 <h2>Choose Times</h2>
                 <button x-on:click="open = !open" class="btn1">
@@ -62,11 +62,12 @@
                     <span x-show="open">Hide Times</span>
                 </button>
                 <div x-show.important="open">
-                    <ul>
+                    <ul class="mSelecor1" >
                         <template x-for="(timeSlot, index) in openTimes" :key="index">
-                            <li>
+                            <li class="selector1" x-bind:style="getBackgroundColor(index)">
                                 <label :for="timeSlot.title" x-text="timeSlot.title"
                                  style="cursor: pointer;" x-on:click="selectTimeSlot(index)"
+
                                  ></label>
                             </li>
                         </template>
@@ -85,23 +86,37 @@
                         <div class="btn_container">
                             <button type="button" id="decrement"
                                 x-on:click="ticketTypes[index].count = (ticketTypes[index].count - 1 > 0 ? ticketTypes[index].count - 1 : 0); calculate(ticketTypes[index])">-</button>
-                            <input type="number" x-model="ticketTypes[index].count" readonly />
+                            <input type="number" x-model="ticketTypes[index].count"  readonly />
                             <button id="increment"
                                 x-on:click="ticketTypes[index].count = ticketTypes[index].count + 1; calculate(ticketTypes[index])">+</button>
                         </div>
                     </div>
                 </template>
 
-            </div> 
-           
+            </div>                                  
 
-            <div>
-                <button class="btn1" x-on:click="gotoCheckout()">Continue with Purchase</button>
-            </div> 
 
         </div>
 
         <div id="right">
+
+            <div class="info">
+                <h2>Price List</h2>
+                <table>
+                    <tr class="tablehead1">
+                        <td>Name</td>
+                        <td>Peak Price</td>
+                        <td>Off-Peak Price</td>
+                    </tr>
+                    <template x-for="guestIndex in ticketTypes">
+                        <tr>
+                            <td x-text="guestIndex.name"></td>
+                            <td x-text="'$'+guestIndex.peak"></td>
+                            <td x-text="'$'+guestIndex.offPeak"></td>
+                        </tr>
+                    </template>
+                </table>
+            </div>
 
             <div class="summary">
                 <h2>Order Summary</h2>
@@ -120,7 +135,7 @@
                     </tr>
                     <tr>
                         <td>Duration</td>
-                        <td x-text="selectedTimeSlots.length + ' Hrs' "></td>
+                        <td x-text="selectedTimeSlots.length + ' Hrs' " ></td>
                     </tr>
                     <tr class="tablehead1">
                         <td>Tickets</td>
@@ -128,7 +143,7 @@
                     </tr>
                     <template x-for="guestIndex in ticketTypes">
                         <tr>   
-                                <td><div x-text="guestIndex.name"></div></td>
+                                <td><div x-text="guestIndex.count+' - '+guestIndex.name"></div></td>
                                 <td><div x-text="'$'+guestIndex.total"></div></td>  
                         </tr>
                     </template>
@@ -138,6 +153,10 @@
                     </tr>
                 </Table>
             </div>
+
+            <div>
+                <button class="btnMain" x-on:click="gotoCheckout()">Continue with Purchase</button>
+            </div> 
 
         </div>
 
@@ -259,6 +278,10 @@
             console.log(this.selectedTimeSlots);
             },
 
+            getBackgroundColor(index) {
+            return this.selectedTimeSlots[index] == null ? 'background: white' : 'background: rgba(57, 145, 145, 0.589)' ;
+            },
+
             getCurrentDate() {
             const today = new Date();
             return today.toLocaleDateString('en-US');
@@ -296,8 +319,8 @@
                     // store the data in the local storage
                     localStorage.setItem('SavedDate', JSON.stringify(this.date));
                     localStorage.setItem('SavedTimeslot', JSON.stringify(this.selectedTimeSlots));
-                    localStorage.setItem('SavedPrice', JSON.stringify(this.ticketTypes));
-                    localStorage.setItem('SavedTotal',grandTotal)
+                    localStorage.setItem('SavedTicketTypes', JSON.stringify(this.ticketTypes));
+                    localStorage.setItem('SavedTotal',grandTotal);
 
                     window.location.href = 'details.html';
                 }

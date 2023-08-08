@@ -14,49 +14,14 @@
     --footer-small-font:14px;
 }
 
-
-#main{
-    height: fit-content;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 1rem;
-    margin-bottom : 1rem;
-}
-
-#left{
-    justify-content:space-between;
-    text-align: center;
-    border-radius: 10px;
-    background-color: aliceblue;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#right{
-    justify-content:flex-start;
-    text-align: center;
-    background-color: rgba(57, 145, 145, 0.589);
-    border-radius: 10px;
-    padding: 2rem;
-}
-
 /* button styling */
-
-.btn_container{
-    position: relative;
-    display: flex;
-}
 
 #increment,#decrement{
     background-color: var(--logo-color);
     border: none;
     width: 10px;
+    font-family:'inter';
+    font-weight: 700;
     font-size: 20px;
     cursor: pointer;
     justify-content: center;
@@ -75,6 +40,8 @@
 input[type="number"]{
     -moz-appearance: textfield;
     text-align: center;
+    font-family:'inter';
+    font-weight: 700;
     font-size: 15px;
     width: 30px;
     background-color: var(--logo-color);
@@ -91,18 +58,10 @@ input::-webkit-outer-spin-button{
 .CG_Input{
     display: flex;
     justify-content: space-between;
+    padding: 5px;
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 15px;
 }
 
-/*Class container styling*/
-
-h2{
-    margin-bottom: 1rem;
-}
-
-.class-container{
-    padding: 2rem;
-    background: wheat;
-    border-radius: 20px;
-}
-
-  

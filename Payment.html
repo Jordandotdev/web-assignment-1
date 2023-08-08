@@ -9,6 +9,7 @@
     
         <!--css link-->
         <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/bookingsystem/payment.css">
     
         <!--google fonts-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +17,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Anton&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
         <!-- JavaScript Links -->
+        <!-- JavaScript Links -->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
 
     </head>
 <body>
@@ -33,11 +38,8 @@
         <div class="bottom">
             <div class="content-wrapper">
                 <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./threats.html">Threats To Turtles</a></li>
-                    <li class="#"><a href="./topics.html">Hatcheries</a></li>
-                    <li><a href="./turtlecat.html">Turtle Categories</a></li>
-                    <li><a href="./donate.html">Donate</a></li>
+                    <li><a href="./details.html">Back</a></li>
+                    <li><a href="#">Payment</a></li>
                 </ul>
             </div>
         </div>
@@ -45,9 +47,159 @@
     </div>
 </nav>
 
-<section>
+<div x-data="checkout">
+    <section id="main">
+        <div id="left">
     
-</section>
+            <form x-on:submit.prevent="gotoPayment">
+                <div class="inp1">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" name="fullName" id="fullName" x-model="guest.fullName" required>
+                </div>
+                <div class="inp1">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" x-model="guest.email">
+                </div>
+                <div class="inp1">
+                    <label for="gender">Gender</label>
+                    <select type="gender" name="gender" id="gender" x-model="guest.gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Goto Payment</button>
+                </div>
+            </form>
+    
+            <span x-text="JSON.stringify(guest)"></span>
+        </div>
+    
+        <div id="right">
+            
+            <div class="summary">
+                <h2>Order Summary</h2>
+                <Table class="table1">
+                    <tr>
+                        <td>Date</td>
+                        <td><div x-text="selectedDate"></td>
+                    </tr>
+                    <tr>
+                        <td>Selected Times</td>
+                        <td>
+                            <template x-for="timeIndex in selectedTimeSlots">
+                                <div x-text="openTimes[timeIndex].title"></div>
+                            </template>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Duration</td>
+                        <td x-text="selectedTimeSlots.length + ' Hrs' "></td>
+                    </tr>
+                    <tr class="tablehead1">
+                        <td>Tickets</td>
+                        <td>Charges</td>
+                    </tr>
+                    <template x-for="guestIndex in ticketTypes">
+                        <tr>   
+                                <td><div x-text="guestIndex.count+' - '+guestIndex.name"></div></td>
+                                <td><div x-text="'$'+guestIndex.total"></div></td>  
+                        </tr>
+                    </template>
+                    <tr>
+                        <td>Total Payable</td>
+                        <td x-text="'$'+grandTotal"></td>
+                    </tr>
+                </Table>
+            </div>
+    
+        </div>
+    </section>
+    </div>
+    
+    
+    
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('checkout', () => ({
+                selectedDate : null,
+                selectedTimeSlots : [],
+                ticketTypes : [],
+                openTimes: [
+    
+                    {
+                        title: '7AM to 8AM',
+                        isPeak: false
+                    },
+                    {
+                        title: '8AM to 9AM',
+                        isPeak: false
+                    },
+                    {
+                        title: '9AM to 10AM',
+                        isPeak: false
+                    },
+                    {
+                        title: '10AM to 11AM (Peak)',
+                        isPeak: true
+                    },
+                    {
+                        title: '11AM to 12PM (Peak)',
+                        isPeak: true
+                    },
+                    {
+                        title: '12PM to 1PM (Peak)',
+                        isPeak: true
+                    },
+                    {
+                        title: '1PM to 2PM',
+                        isPeak: false
+                    },
+                    {
+                        title: '2PM to 3PM',
+                        isPeak: false
+                    },
+                    {
+                        title: '3PM to 4PM (Peak)',
+                        isPeak: true
+                    },
+                    {
+                        title: '4PM to 5PM (Peak)',
+                        isPeak: true
+                    },
+                    {
+                        title: '5PM to 6PM (Peak)',
+                        isPeak: true
+                    },
+                ],
+    
+                guest: {
+                    fullName: '',
+                    mobile: '',
+                    email: '',
+                    gender: ''
+                },
+                init() {
+                    this.selectedDate = JSON.parse(localStorage.getItem('SavedDate'));
+                    this.selectedTimeSlots = JSON.parse(localStorage.getItem('SavedTimeslot'));
+                    this.ticketTypes = JSON.parse(localStorage.getItem('SavedTicketTypes'));
+                    this.grandTotal = JSON.parse(localStorage.getItem('SavedTotal'));
+    
+                    const input = document.querySelector("#mobile");
+                    window.intlTelInput(input, {
+                        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+                    });
+                },
+                gotoPayment() {
+                    // set the guest data to local storage
+                    localStorage.setItem('guest', JSON.stringify(this.guest))
+    
+                    // redirect to payment page
+                    window.location.href = 'payment.html'
+                }
+            }))
+        })
+    </script>
 
 <!--Footer section-->
 
