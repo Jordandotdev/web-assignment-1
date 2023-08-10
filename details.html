@@ -20,6 +20,8 @@
         <!-- JavaScript Links -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+ 
 
     </head>
 <body>
@@ -48,14 +50,14 @@
 
 
 
-<div x-data="payment">
+<div x-data="details">
 <section id="main">
     <div id="left">
 
         <form x-on:submit.prevent="gotoPayment">
             <div class="inp1">
                 <label for="fullName">Full Name</label>
-                <input type="text" name="fullName" id="fullName" x-model="guest.fullName" required>
+                <input placeholder="Enter Full Name" type="text" name="fullName" id="fullName" x-model="guest.fullName" required>
             </div>
             <div class="inp1">
                 <label for="mobile">Mobile</label>
@@ -63,33 +65,33 @@
             </div>
             <div class="inp1">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" x-model="guest.email" required>
+                <input placeholder="Enter Email" type="email" name="email" id="email" x-model="guest.email" required>
             </div>
             <div class="inp1">
                 <label for="confirm_email">Confirm Email</label>
-                <input type="email" name="confirm_email" id="confirm_email" x-model="guest.confirmEmail" required>
+                <input placeholder="Re-enter Email" type="email" name="confirm_email" id="confirm_email" x-model="guest.confirmEmail" required autocomplete="off">
             </div>
             <div x-show="guest.email !== guest.confirmEmail">
-                <p style="color: red;">Emails do not match. Please confirm your email.</p>
+                <p class="inperror" style="color: red;">Add a valid email ID</p>
             </div>  
             <div class="inp1">
                 <label for="gender">Gender</label>
                 <select type="gender" name="gender" id="gender" x-model="guest.gender" required>
-                    <optgroup label="Choose">
+                    <optgroup label="Choose Gender" style="text-align: center;">
                         <option disabled selected hidden value=""></option>
                     </optgroup>
-                    <optgroup label="Gender">
+                    <optgroup style="text-align: center;">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </optgroup>
                 </select>
             </div>
             <div>
-                <button type="submit">Goto Payment</button>
+                <button  class="btnMain" type="submit">Go to Payment</button>
             </div>
         </form>
 
-        <span x-text="JSON.stringify(guest)"></span>
+        <!-- <span x-text="JSON.stringify(guest)"></span> -->
     </div>
 
     <div id="right">
@@ -138,7 +140,7 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('payment', () => ({
+        Alpine.data('details', () => ({
             selectedDate : null,
             selectedTimeSlots : [],
 
@@ -208,10 +210,17 @@
                 window.intlTelInput(input, {
                     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
                 });
+
+                window.addEventListener('storage', (event) => {
+                    if (event.key === null) {
+                        window.location.href = 'tickets.html';
+                        alert('Error with saved data, Please re-enter');
+                    }
+                    });
             },
 
             gotoPayment() {
-                localStorage.setItem('savedGuest', JSON.stringify(this.guest))
+                localStorage.setItem('SavedGuest', JSON.stringify(this.guest))
 
                 window.location.href = 'payment.html'
             }

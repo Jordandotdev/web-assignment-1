@@ -61,18 +61,16 @@
                     <span x-show="!open">Show Times</span>
                     <span x-show="open">Hide Times</span>
                 </button>
-                <div x-show.important="open">
                     <ul class="mSelecor1" >
                         <template x-for="(timeSlot, index) in openTimes" :key="index">
-                            <li class="selector1" x-bind:style="getBackgroundColor(index)">
+                            <li x-show.important="open"
+                            class="selector1" x-bind:style="getBackgroundColor(timeSlot)">
                                 <label :for="timeSlot.title" x-text="timeSlot.title"
                                  style="cursor: pointer;" x-on:click="selectTimeSlot(index)"
-
                                  ></label>
                             </li>
                         </template>
                     </ul>
-                </div>
             </div>
 
 
@@ -82,6 +80,7 @@
 
                 <template x-for="(ticketType, index) in ticketTypes" :key="index">
                     <div class="CG_Input">
+                        <div x-init="$watch('selectedTimeSlots.length', value => calculate(ticketType))"></div>
                         <label x-bind:for="ticketType.name" x-text="ticketType.name"></label>
                         <div class="btn_container">
                             <button type="button" id="decrement"
@@ -278,8 +277,9 @@
             console.log(this.selectedTimeSlots);
             },
 
-            getBackgroundColor(index) {
-            return this.selectedTimeSlots[index] == null ? 'background: white' : 'background: rgba(57, 145, 145, 0.589)' ;
+            getBackgroundColor(openTimes, timeSlot) {
+            console.log(timeSlot)
+            return this.openTimes[timeSlot] == null ? 'background: white' : 'background: rgba(57, 145, 145, 0.589)' ;
             },
 
             getCurrentDate() {

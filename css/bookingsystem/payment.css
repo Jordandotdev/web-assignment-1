@@ -1,0 +1,12 @@
+input{
+    display: block;
+    border: solid 2px gray;
+    border-radius: 10px;
+    transition: ease-in-out;
+    height: 20px;
+    padding: 0 10px;
+}
+
+input:focus{
+    border: solid 2px blue;
+}

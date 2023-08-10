@@ -245,6 +245,27 @@ iframe{
     border-radius: 10px;
 }
 
+/* button */
+
+.btnBook{
+    display: block;
+    
+    padding: 0.5rem;
+    border-radius: 20px;
+    background-color: var(--red-color);
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+
+    transition: var(--transiton-btn-hover);
+}
+
+.btnBook:hover{
+    scale: 1.1;
+}
+
 
 /* Gallery Section------------------- */
 

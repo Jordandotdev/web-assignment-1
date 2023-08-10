@@ -17,7 +17,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Anton&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
         <!-- JavaScript Links -->
-        <!-- JavaScript Links -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
 
@@ -47,32 +46,34 @@
     </div>
 </nav>
 
-<div x-data="checkout">
+<div x-data="payment">
     <section id="main">
         <div id="left">
     
-            <form x-on:submit.prevent="gotoPayment">
+            <form x-on:submit.prevent="gotoConfirm">
                 <div class="inp1">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" name="fullName" id="fullName" x-model="guest.fullName" required>
+                    <label for="cardInfo">Card Number</label>
+                    <input type="text" name="cardNumber" id="cardNumber" x-model="cardInfo.cardNumber" required>
+                </div>
+                <div class="row-wrapper">
+                    <div class="inp1">
+                        <label for="expiryDate">Expiry Date</label>
+                        <input type="text" name="expiryDate" id="expiryDate" x-model="cardInfo.expiryDate">
+                    </div>
+                    <div class="inp1">
+                        <label for="expiryDate">CCV/CVV</label>
+                        <input type="text" name="expiryDate" id="expiryDate" x-model="cardInfo.CCV">
+                    </div>
                 </div>
                 <div class="inp1">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" x-model="guest.email">
-                </div>
-                <div class="inp1">
-                    <label for="gender">Gender</label>
-                    <select type="gender" name="gender" id="gender" x-model="guest.gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
+                    <label for="cardName">Name on Card</label>
+                    <input type="text" name="cardName" id="cardName" x-model="cardInfo.cardName">
                 </div>
                 <div>
-                    <button type="submit">Goto Payment</button>
+                    <button class="btnMain" type="submit">Pay <span x-text="'$'+grandTotal"></span></button>
                 </div>
             </form>
     
-            <span x-text="JSON.stringify(guest)"></span>
         </div>
     
         <div id="right">
@@ -121,10 +122,11 @@
     
     <script>
         document.addEventListener('alpine:init', () => {
-            Alpine.data('checkout', () => ({
+            Alpine.data('payment', () => ({
                 selectedDate : null,
                 selectedTimeSlots : [],
                 ticketTypes : [],
+                grandTotal : null,
                 openTimes: [
     
                     {
@@ -173,29 +175,32 @@
                     },
                 ],
     
-                guest: {
-                    fullName: '',
-                    mobile: '',
-                    email: '',
-                    gender: ''
+                cardInfo: {
+                    cardNumber: '',
+                    expiryDate: '',
+                    CCV: '',
+                    cardName: ''
                 },
+
                 init() {
                     this.selectedDate = JSON.parse(localStorage.getItem('SavedDate'));
                     this.selectedTimeSlots = JSON.parse(localStorage.getItem('SavedTimeslot'));
                     this.ticketTypes = JSON.parse(localStorage.getItem('SavedTicketTypes'));
                     this.grandTotal = JSON.parse(localStorage.getItem('SavedTotal'));
-    
-                    const input = document.querySelector("#mobile");
-                    window.intlTelInput(input, {
-                        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+
+                    window.addEventListener('storage', (event) => {
+                    if (event.key === null) {
+                        window.location.href = 'tickets.html';
+                        alert('Error with saved data, Please re-enter');
+                    }
                     });
                 },
-                gotoPayment() {
+
+                gotoConfirm() {
                     // set the guest data to local storage
-                    localStorage.setItem('guest', JSON.stringify(this.guest))
-    
-                    // redirect to payment page
-                    window.location.href = 'payment.html'
+                    localStorage.setItem('SavedCardInfo', JSON.stringify(this.cardInfo))
+ 
+                    window.location.href = 'Confirmation.html'
                 }
             }))
         })
