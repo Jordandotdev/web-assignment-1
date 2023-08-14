@@ -37,7 +37,6 @@
 
 body{
     overflow-x: hidden;
-    background: url(../assets/turtleLinebackground.jpg);
 }
 
 h1{
@@ -458,7 +457,7 @@ footer{
     border-radius: 10px 10px 0px 0px;
     padding-top: 1rem;
     width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /*Footer top section*/
