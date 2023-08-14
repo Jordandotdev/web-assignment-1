@@ -49,6 +49,7 @@
     <section id="main">
          
             <div class="summary">
+                <div class="boundry">
                 <h3 class="label3">Thank you for your order. 
                     Your order has been confirmed with us. 
                      You can show this confirmation at the entrance.
@@ -102,8 +103,10 @@
                         <td x-text="'$'+grandTotal"></td>
                     </tr>
                 </Table>
-
-                <button class="btnMain" x-on:click="gotoHome()" >Home</button>
+                <div class="btnCenter"> 
+                <button class="btnMainFull" x-on:click="gotoHome()" >HOME</button>
+                </div>
+                </div>
             </div>
 
     </section>
@@ -183,7 +186,7 @@
                 },
 
                 gotoHome() {
-                    window.location.href = 'hikka-th.html'
+                    window.location.href = 'index.html'
                 }
             }))
         })

@@ -262,6 +262,26 @@ iframe{
     transition: var(--transiton-btn-hover);
 }
 
+.btnMainFull{
+    padding:1rem 0.5rem;
+    border-radius: 20px;
+    background-color: var(--red-color);
+    min-width: 20rem;
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+
+    transition: var(--transiton-btn-hover);
+}
+
+.btnCenter{
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
 .btnBook:hover{
     scale: 1.1;
 }

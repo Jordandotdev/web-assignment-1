@@ -1,3 +1,10 @@
 .summary{
     padding: 10%;
 }
+
+.boundry{
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
+    padding: 10px;
+}
+

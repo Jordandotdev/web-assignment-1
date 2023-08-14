@@ -114,6 +114,25 @@ section{
     transition: var(--transiton-btn-hover);
 }
 
+.btnMainFull{
+    padding: 0.5rem;
+    border-radius: 20px;
+    background-color: var(--red-color);
+    width: 20rem;
+
+    font-family:'inter';
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+
+    transition: var(--transiton-btn-hover);
+}
+
+.btnCenter{
+    display: flex;
+    justify-content: center;
+}
+
 button:hover,.btn1:hover,.btnMain:hover{
     scale: 1.1;
 }
@@ -123,7 +142,7 @@ button:hover,.btn1:hover,.btnMain:hover{
 .inp1{
     display: flex;
     flex-direction: column;
-    background: wheat;
+    background: none;
     padding: 10px;
 
     font-family:'inter';
@@ -151,7 +170,7 @@ select{
 
 form{
     padding: 1rem;
-    background: wheat;
+    background: rgba(255, 255, 255, 0.75);
     border-radius: 10px;
 }
 
@@ -265,7 +284,7 @@ footer{
     border-radius: 10px 10px 0px 0px;
     padding-top: 1rem;
     width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /*Footer top section*/
@@ -625,7 +644,6 @@ table {
     justify-content:space-between;
     text-align: center;
     border-radius: 10px;
-    background-color: aliceblue;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -635,7 +653,7 @@ table {
 #right{
     justify-content:flex-start;
     text-align: center;
-    background-color: rgba(57, 145, 145, 0.589);
+    background: rgba(255, 255, 255, 0.75);
     border-radius: 10px;
     padding: 2rem;
 }
@@ -648,7 +666,7 @@ h2{
 
 .class-container{
     padding: 2rem;
-    background: wheat;
+    background: rgba(255, 255, 255, 0.75);
     border-radius: 20px;
 }
 
@@ -682,3 +700,12 @@ h2{
     color: black;
 }
 
+/* background image */
+
+body{
+    background: url(../assets/turtleLinebackground.jpg);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
