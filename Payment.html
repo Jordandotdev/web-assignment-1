@@ -16,12 +16,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Anton&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
-        <!-- JavaScript Links -->
+        <!-- Alpine Plugins -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+        
+        <!-- Alpine Core -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
 
-
-    </head>
+</head>
 <body>
 
     <!--Navbar-->
@@ -53,21 +54,21 @@
             <form x-on:submit.prevent="gotoConfirm">
                 <div class="inp1">
                     <label for="cardInfo">Card Number</label>
-                    <input type="text" name="cardNumber" id="cardNumber" x-model="cardInfo.cardNumber" required>
+                    <input x-mask="9999-9999-9999-9999" placeholder="Enter Card Number"  type="text" name="cardNumber" id="cardNumber" x-model="cardInfo.cardNumber" required>
                 </div>
                 <div class="row-wrapper">
                     <div class="inp1">
                         <label for="expiryDate">Expiry Date</label>
-                        <input type="text" name="expiryDate" id="expiryDate" x-model="cardInfo.expiryDate">
+                        <input x-mask="99/99" placeholder="MM/YY" type="text" name="expiryDate" id="expiryDate" x-model="cardInfo.expiryDate">
                     </div>
                     <div class="inp1">
                         <label for="expiryDate">CCV/CVV</label>
-                        <input type="text" name="expiryDate" id="expiryDate" x-model="cardInfo.CCV">
+                        <input x-mask="999" placeholder="CCV/CVV" type="text" name="expiryDate" id="expiryDate" x-model="cardInfo.CCV">
                     </div>
                 </div>
                 <div class="inp1">
                     <label for="cardName">Name on Card</label>
-                    <input type="text" name="cardName" id="cardName" x-model="cardInfo.cardName">
+                    <input placeholder="Enter Full Name" type="text" name="cardName" id="cardName" x-model="cardInfo.cardName" pattern="^([a-zA-Z]+\s){1,}[a-zA-Z]+$">
                 </div>
                 <div>
                     <button class="btnMain" type="submit">Pay <span x-text="'$'+grandTotal"></span></button>
@@ -197,7 +198,6 @@
                 },
 
                 gotoConfirm() {
-                    // set the guest data to local storage
                     localStorage.setItem('SavedCardInfo', JSON.stringify(this.cardInfo))
  
                     window.location.href = 'Confirmation.html'

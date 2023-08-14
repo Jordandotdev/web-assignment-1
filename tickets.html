@@ -57,14 +57,15 @@
         
             <div id="time " class="class-container">
                 <h2>Choose Times</h2>
-                <button x-on:click="open = !open" class="btn1">
+                <button x-on:click="open = !open" background: white;
+                class="btn1">
                     <span x-show="!open">Show Times</span>
                     <span x-show="open">Hide Times</span>
                 </button>
                     <ul class="mSelecor1" >
                         <template x-for="(timeSlot, index) in openTimes" :key="index">
                             <li x-show.important="open"
-                            class="selector1" x-bind:style="getBackgroundColor(timeSlot)">
+                            class="selector1">
                                 <label :for="timeSlot.title" x-text="timeSlot.title"
                                  style="cursor: pointer;" x-on:click="selectTimeSlot(index)"
                                  ></label>
@@ -275,16 +276,6 @@
 
 
             console.log(this.selectedTimeSlots);
-            },
-
-            getBackgroundColor(openTimes, timeSlot) {
-            console.log(timeSlot)
-            return this.openTimes[timeSlot] == null ? 'background: white' : 'background: rgba(57, 145, 145, 0.589)' ;
-            },
-
-            getCurrentDate() {
-            const today = new Date();
-            return today.toLocaleDateString('en-US');
             },
       
             calculate(ticketType) {
