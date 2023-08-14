@@ -15,9 +15,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Anton&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    
+
         <!-- JavaScript Links -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="./JavaScript/main.js"></script>
 
     </head>
 <body>
@@ -164,165 +165,6 @@
 
     </section>
 </div>
-
-
-<script>
-
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('tickets', () => ({
-            date: null,
-            open: false,
-            selectedTimeSlots: [],
-            ticketTypes: [
-                {
-                    name: 'Sri Lankan Adult',
-                    peak: 6,
-                    offPeak: 4,
-                    count: 0,
-                    total: 0
-                },
-                {
-                    name: 'Sri Lankan Child',
-                    peak: 3,
-                    offPeak: 2,
-                    count: 0,
-                    total: 0
-                },
-                {
-                    name: 'Foreign Adult',
-                    peak: 13,
-                    offPeak: 10,
-                    count: 0,
-                    total: 0
-                },
-                {
-                    name: 'Foreign Child',
-                    peak: 8,
-                    offPeak: 5,
-                    count: 0,
-                    total: 0
-                },
-                {
-                    name: 'Infant',
-                    peak: 0,
-                    offPeak: 0,
-                    count: 0,
-                    total: 0
-                },
-            ],
-            openTimes: [
-
-                {
-                    title: '7AM to 8AM',
-                    isPeak: false
-                },
-                {
-                    title: '8AM to 9AM',
-                    isPeak: false
-                },
-                {
-                    title: '9AM to 10AM',
-                    isPeak: false
-                },
-                {
-                    title: '10AM to 11AM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '11AM to 12PM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '12PM to 1PM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '1PM to 2PM',
-                    isPeak: false
-                },
-                {
-                    title: '2PM to 3PM',
-                    isPeak: false
-                },
-                {
-                    title: '3PM to 4PM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '4PM to 5PM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '5PM to 6PM (Peak)',
-                    isPeak: true
-                },
-            ],
-
-            selectTimeSlot(index) {
-
-            if (this.selectedTimeSlots.includes(index)) {
-                this.selectedTimeSlots = this.selectedTimeSlots.filter(item => item !== index);
-            } else {
-                let lastElement = this.selectedTimeSlots[this.selectedTimeSlots.length - 1];
-
-                    if (!this.selectedTimeSlots.length || index - 1 == lastElement) {
-
-                        this.selectedTimeSlots.push(index);
-
-                    } else {
-                        alert('You can only select consecutive time slots');
-                    }
-            }
-
-            this.selectedTimeSlots = this.selectedTimeSlots.sort();
-
-
-            console.log(this.selectedTimeSlots);
-            },
-      
-            calculate(ticketType) {
-                
-            let total = 0;
-
-            this.selectedTimeSlots.forEach((timeSlotIndex) => {
-
-                // calculate the total
-                total += parseInt(ticketType.count * (this.openTimes[timeSlotIndex].isPeak ? ticketType.peak : ticketType.offPeak));
-            });
-
-            ticketType.total = total;
-
-            },
-
-            calculateGrandTotal(ticketTypes) {
-            grandTotal = 0;
-
-            for (const ticketType of ticketTypes) {
-                grandTotal += ticketType.total;
-            }
-
-            return grandTotal;
-            },
-
-            gotoCheckout(){
-
-                    if(this.date == null || this.selectedTimeSlots == null || this.ticketTypes == null){
-                        alert('Please Fill the given Criteria');
-                }else{
-                    // store the data in the local storage
-                    localStorage.setItem('SavedDate', JSON.stringify(this.date));
-                    localStorage.setItem('SavedTimeslot', JSON.stringify(this.selectedTimeSlots));
-                    localStorage.setItem('SavedTicketTypes', JSON.stringify(this.ticketTypes));
-                    localStorage.setItem('SavedTotal',grandTotal);
-
-                    window.location.href = 'details.html';
-                }
-            }
-
-        }));
-    })
-
-</script>
 
 <!--Footer section-->
 

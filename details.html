@@ -18,6 +18,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Anton&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
         <!-- JavaScript Links -->
+        <script src="./JavaScript/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
         <!-- Alpine Plugins -->
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
@@ -136,99 +137,6 @@
     </div>
 </section>
 </div>
-
-
-
-<script>
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('details', () => ({
-            selectedDate : null,
-            selectedTimeSlots : [],
-
-            ticketTypes : [],
-            openTimes: [
-
-                {
-                    title: '7AM to 8AM',
-                    isPeak: false
-                },
-                {
-                    title: '8AM to 9AM',
-                    isPeak: false
-                },
-                {
-                    title: '9AM to 10AM',
-                    isPeak: false
-                },
-                {
-                    title: '10AM to 11AM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '11AM to 12PM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '12PM to 1PM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '1PM to 2PM',
-                    isPeak: false
-                },
-                {
-                    title: '2PM to 3PM',
-                    isPeak: false
-                },
-                {
-                    title: '3PM to 4PM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '4PM to 5PM (Peak)',
-                    isPeak: true
-                },
-                {
-                    title: '5PM to 6PM (Peak)',
-                    isPeak: true
-                },
-            ],
-            guest: {
-                fullName: '',
-                mobile: '',
-                email: '',
-                confirmEmail: '',
-                gender: ''
-            },
-
-            init() {
-                this.selectedDate = JSON.parse(localStorage.getItem('SavedDate'));
-                this.selectedTimeSlots = JSON.parse(localStorage.getItem('SavedTimeslot'));
-                this.ticketTypes = JSON.parse(localStorage.getItem('SavedTicketTypes'));
-                this.grandTotal = JSON.parse(localStorage.getItem('SavedTotal'));
-
-                const input = document.querySelector("#mobile");
-                window.intlTelInput(input, {
-                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
-                });
-
-                window.addEventListener('storage', (event) => {
-                    if (event.key === null) {
-                        window.location.href = 'tickets.html';
-                        alert('Error with saved data, Please re-enter');
-                    }
-                    });
-            },
-
-            gotoPayment() {
-                localStorage.setItem('SavedGuest', JSON.stringify(this.guest))
-
-                window.location.href = 'Payment.html'
-            }
-        }))
-    })
-</script>
-
 
 
 <!--Footer section-->
